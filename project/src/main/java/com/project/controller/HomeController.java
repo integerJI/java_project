@@ -107,6 +107,18 @@ public class HomeController {
 		
 		return "redirect:/projectList.do";
 	}
+	
+	/**
+	 * 글을 삭제합니다.
+	 * @return
+	 */
+	@RequestMapping(value = "/projectDelete.do")
+	public String projectDelete(int proId) {
+
+		projectService.deleteProject(proId);
+		
+		return "redirect:/projectList.do";
+	}
 
 	
 }
