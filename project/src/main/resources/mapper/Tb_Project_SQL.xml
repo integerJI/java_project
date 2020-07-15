@@ -12,4 +12,22 @@
 	ORDER BY PRO_ID DESC
  </select>
 
+<insert id="insertProject">
+	<selectKey resultType="int" keyProperty="proId" order="BEFORE">
+		SELECT NVL(MAX(PRO_ID),0)+1 FROM TB_PROJECT
+	</selectKey>  
+		INSERT INTO TB_PROJECT (
+			PRO_ID, 
+			PRO_TITLE, 
+			PRO_BODY, 
+			PRO_DATE
+		 ) VALUES (
+			#{proId}, 
+			#{proTitle}, 
+			#{proBody},
+			SYSDATE
+		 )
+</insert>
+
+
 </mapper>

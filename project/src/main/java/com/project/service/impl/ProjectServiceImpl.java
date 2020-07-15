@@ -1,5 +1,7 @@
 package com.project.service.impl;
 
+// comproject.service.impl/ProjectServiceImpl.java
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,4 +22,10 @@ public class ProjectServiceImpl implements ProjectService {
 	public List<ProjectVO> selectProjectList() throws Exception {
 		return projectMapper.selectProjectList();
 	}	
+
+	@Override
+	public void insertProject(ProjectVO projectVO) {
+		projectMapper.insertProject(projectVO);
+	}
+	
 }
