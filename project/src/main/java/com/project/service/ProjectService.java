@@ -11,5 +11,7 @@ public interface ProjectService {
 	List<ProjectVO> selectProjectList() throws Exception;
 	
 	void insertProject(ProjectVO projectVO);
+	
+	void updateProject(ProjectVO projectVO);
 
 }

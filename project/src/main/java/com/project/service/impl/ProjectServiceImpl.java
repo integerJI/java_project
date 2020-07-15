@@ -28,4 +28,9 @@ public class ProjectServiceImpl implements ProjectService {
 		projectMapper.insertProject(projectVO);
 	}
 	
+	@Override
+	public void updateProject(ProjectVO projectVO) {
+		projectMapper.updateProject(projectVO);
+	}
+	
 }
