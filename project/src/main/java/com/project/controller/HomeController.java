@@ -46,6 +46,24 @@ public class HomeController {
 		return "home";
 	}
 	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/dev.do", method = RequestMethod.GET)
+	public String dev(Model model) {
+				
+		return "dev";
+	}
+	
+	@RequestMapping(value = "/getProjectList.do")
+	public List<ProjectVO> getProjectList() throws Throwable{
+        System.out.println(projectService.selectProjectList());
+        return projectService.selectProjectList();
+    }
+
+
+	
+	
 	@RequestMapping(value = "/projectList.do")
 	public String projectList(Model model) throws Exception {
 
