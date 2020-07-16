@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.service.ProjectService;
 import com.project.vo.ProjectVO;
 
@@ -55,26 +55,39 @@ public class HomeController {
 		return "dev";
 	}
 	
-	@RequestMapping(value = "/getProjectList.do")
-	public List<ProjectVO> getProjectList() throws Throwable{
-        System.out.println(projectService.selectProjectList());
-        return projectService.selectProjectList();
+//	public List<ProjectVO> getProjectList() throws Throwable{
+//        System.out.println(projectService.selectProjectList());
+//        return projectService.selectProjectList();
+//    }
+//	@RequestMapping(value = "/getProjectList.do")
+//	public List<ProjectVO> getProjectList(ProjectVO projectVO) {
+//		
+//		 List<ProjectVO> List = projectService.selectProjectList(projectVO);
+//		 
+//		 System.out.println(projectVO+"aaaaaaaaaaaaaaaaaaaa");
+//		 return List;
+//	}
+
+    @ResponseBody // ajax를 불르기 위한 어노테이션
+    @RequestMapping(value="/getProjectList.do", method = RequestMethod.GET)
+        public List<ProjectVO> selectProjectList() throws Throwable{
+    	System.out.println(projectService.selectProjectList());
+		return projectService.selectProjectList();
     }
 
-
 	
 	
-	@RequestMapping(value = "/projectList.do")
-	public String projectList(Model model) throws Exception {
-
-	    List<ProjectVO> list = projectService.selectProjectList();
-
-	    logger.info(list.toString());
-
-	    model.addAttribute("list", list);
-
-	    return "projectList";
-	}
+//	@RequestMapping(value = "/projectList.do")
+//	public String projectList(Model model) throws Exception {
+//
+//	    List<ProjectVO> list = projectService.selectProjectList();
+//
+//	    logger.info(list.toString());
+//
+//	    model.addAttribute("list", list);
+//
+//	    return "projectList";
+//	}
 	
 	/**
 	 * 게시판 등록폼

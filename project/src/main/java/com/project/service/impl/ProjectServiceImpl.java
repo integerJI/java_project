@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.project.service.ProjectService;
 import com.project.service.dao.ProjectDAO;
@@ -17,11 +16,15 @@ public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ProjectDAO projectMapper;
 
-	@Override
-	@Transactional
-	public List<ProjectVO> selectProjectList() throws Exception {
+	public List<ProjectVO> selectProjectList() {
 		return projectMapper.selectProjectList();
-	}	
+	}
+	
+//	@Override
+//	@Transactional
+//	public List<ProjectVO> selectProjectList() throws Exception {
+//		return projectMapper.selectProjectList();
+//	}	
 
 	@Override
 	public void insertProject(ProjectVO projectVO) {

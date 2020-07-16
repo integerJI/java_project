@@ -5,7 +5,9 @@ import com.project.vo.ProjectVO;
 
 public interface ProjectDAO {
 	
-	List<ProjectVO> selectProjectList() throws Exception;
+//	List<ProjectVO> selectProjectList() throws Exception;
+	
+	public List<ProjectVO> selectProjectList();
 	
 	void insertProject(ProjectVO projectVO);
 	
