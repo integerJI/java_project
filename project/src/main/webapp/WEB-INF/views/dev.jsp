@@ -22,11 +22,26 @@
 	
 <script type="text/javascript">
 
-$(document).ready(function() {
-    $('#example').DataTable( {
-        "ajax": '/getProjectList.do'
-    } );
-} );
+
+    $.ajax({
+        type : "GET", //보내는 타입을 Post방식으로 할지,  GET방식으로 할지 결정
+        url : "/getProjectList.do", // /내 프로젝트명/XML파일의namespace/내가불러올XML의Quer
+        contentType : "application/x-www-form-urlencoded; charset=utf-8",  // 기본값이라고 하니까 건들이지 않았고 
+        success : function(res) {
+             console.log("성공");
+        },
+        error : function(request, status, error) {
+            alert("에러가 발생했습니다. 관리자에게 문의하시기 바랍니다");
+        }
+    });
+   
+
+
+// $(document).ready(function() {
+//     $('#example').DataTable( {
+//         "ajax": '/getProjectList.do'
+//     } );
+// } );
 
 
 // $(document).ready(function() {

@@ -1,9 +1,14 @@
 package com.project.service.impl;
 
+import java.util.HashMap;
+
 // comproject.service.impl/ProjectServiceImpl.java
 
 import java.util.List;
+import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +18,13 @@ import com.project.vo.ProjectVO;
 
 @Service("projectService")
 public class ProjectServiceImpl implements ProjectService {
+
+	private static final Logger logger = LoggerFactory.getLogger(ProjectServiceImpl.class);
+	
 	@Autowired
 	private ProjectDAO projectMapper;
 
+	
 	public List<ProjectVO> selectProjectList() {
 		return projectMapper.selectProjectList();
 	}

@@ -3,8 +3,9 @@
 
 <mapper namespace="com.project.service.dao.ProjectDAO">
 
- <select id="selectProjectList" resultType="projectVO">
-	SELECT 	PRO_ID, 
+ <select id="selectProjectList" resultType="com.project.vo.ProjectVO">
+	SELECT 	
+		PRO_ID, 
 		PRO_TITLE, 
 		PRO_BODY, 
 		PRO_DATE 

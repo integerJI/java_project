@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.service.ProjectService;
 import com.project.vo.ProjectVO;
 
@@ -54,6 +53,17 @@ public class HomeController {
 				
 		return "dev";
 	}
+
+	@RequestMapping(value = "/getProjectList.do", method = RequestMethod.GET)
+	public String getProjectList(Locale locale, Model model) throws Exception{
+
+		logger.info("getProjectList");
+	
+		List<ProjectVO> userList = projectService.selectProjectList();
+		model.addAttribute("userList", userList);
+	
+		return model;
+Â Â Â Â }
 	
 //	public List<ProjectVO> getProjectList() throws Throwable{
 //        System.out.println(projectService.selectProjectList());
@@ -68,12 +78,45 @@ public class HomeController {
 //		 return List;
 //	}
 
-    @ResponseBody // ajax¸¦ ºÒ¸£±â À§ÇÑ ¾î³ëÅ×ÀÌ¼Ç
-    @RequestMapping(value="/getProjectList.do", method = RequestMethod.GET)
-        public List<ProjectVO> selectProjectList() throws Throwable{
-    	System.out.println(projectService.selectProjectList());
-		return projectService.selectProjectList();
-    }
+//    @ResponseBody // ajaxë¥¼ ë¶ˆë¥´ê¸° ìœ„í•œ ì–´ë…¸í…Œì´ì…˜
+//    @RequestMapping(value="/getProjectList.do")
+//        public List<ProjectVO> selectProjectList(ProjectVO projectVO) throws Throwable{
+//    	
+//    	
+//    	System.out.println(projectVO.getProId()
+//    	);
+//    	
+//    	
+//		return projectService.selectProjectList(projectVO);
+//    }
+
+	
+//	@RequestMapping(value = "/getProjectList.do")
+//	 public @ResponseBody Object getProjectList(HttpServletRequest request,
+//	   HttpServletResponse response,
+//	   @ModelAttribute("projectVO") ProjectVO projectVO){
+//	  
+//	  Map<String, Object> mp = new HashMap<String, Object>();
+//	  mp.put("data", projectService.selectProjectList(projectVO));
+//	  
+//	  Object result = mp;
+//	  
+//	  System.out.println(result);
+//	  
+//	  return result;
+//	}
+//	
+//	
+//
+//    @ResponseBody // ajaxë¥¼ ë¶ˆë¥´ê¸° ìœ„í•œ ì–´ë…¸í…Œì´ì…˜
+//    @RequestMapping(value="/getProjectList.do", method = RequestMethod.GET)
+//        public List<ProjectVO> selectProjectList() throws Throwable{
+//    	System.out.println(projectService.selectProjectList());
+//        return projectService.selectProjectList();
+//    }
+// 
+
+
 
 	
 	
@@ -90,7 +133,7 @@ public class HomeController {
 //	}
 	
 	/**
-	 * °Ô½ÃÆÇ µî·ÏÆû
+	 * ê²Œì‹œíŒ ë“±ë¡í¼
 	 * @param projectVO
 	 * @param model
 	 * @return
@@ -103,7 +146,7 @@ public class HomeController {
 	}
 	
 	/**
-	 * ±ÛÀ» µî·ÏÇÕ´Ï´Ù.
+	 * ê¸€ì„ ë“±ë¡í•©ë‹ˆë‹¤.
 	 * @return
 	 */
 	@RequestMapping(value = "/projectInsert.do")
@@ -115,7 +158,7 @@ public class HomeController {
 	}
 
 	/**
-	 * °Ô½ÃÆÇ ¼öÁ¤Æû
+	 * ê²Œì‹œíŒ ìˆ˜ì •í¼
 	 * @param projectVO
 	 * @param model
 	 * @return
@@ -128,7 +171,7 @@ public class HomeController {
 	}
 	
 	/**
-	 * ±ÛÀ» ¼öÁ¤ÇÕ´Ï´Ù.
+	 * ê¸€ì„ ìˆ˜ì •í•©ë‹ˆë‹¤.
 	 * @return
 	 */
 	@RequestMapping(value = "/projectUpdate.do")
@@ -140,7 +183,7 @@ public class HomeController {
 	}
 	
 	/**
-	 * ±ÛÀ» »èÁ¦ÇÕ´Ï´Ù.
+	 * ê¸€ì„ ì‚­ì œí•©ë‹ˆë‹¤.
 	 * @return
 	 */
 	@RequestMapping(value = "/projectDelete.do")
